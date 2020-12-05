@@ -1,0 +1,45 @@
+/*
+komodo tool: CSS-present-code
+=============================
+async: 0
+icon: chrome://famfamfamsilk/skin/icons/arrow_undo.png
+is_clean: true
+keyboard_shortcut: Alt+,
+language: JavaScript
+rank: 100
+trigger: trigger_postopen
+trigger_enabled: 0
+type: macro
+version: 1.1.5
+=============================*/
+var text;
+var text_out = 'background: url("data:image/svg+xml,';
+var buf = 0;
+var buf1 = 0;
+var buf_old = 0;
+text = require("ko/editor").getSelection();
+for (var i=0; i < text.length; i++)
+{
+buf = text[i].charCodeAt(0);
+if ((buf!=10)&&(buf!=13)&&(buf!=9)&&!((buf==32)&&(buf_old==32)))
+{
+ if (((buf>31)&&(buf<48)) || ((buf>57)&&(buf<65))) 
+   {
+       text_out = text_out + String.fromCharCode(37);
+	   buf1 = buf/16 + 48;
+	   if (buf1>57) buf1 = buf1 + 7;
+	   text_out = text_out + String.fromCharCode(buf1);
+	   buf1 = buf%16 + 48;
+	   if (buf1>57) buf1 = buf1 + 7;
+	   text_out = text_out + String.fromCharCode(buf1);
+   }
+   else 
+  {
+   text_out = text_out + String.fromCharCode(buf);
+  }
+}
+buf_old = buf;
+}
+text_out = text_out + '");'
+alert(text_out);
+//require("ko/dialogs").alert(text_out, {title:"Persent encoding string:"});

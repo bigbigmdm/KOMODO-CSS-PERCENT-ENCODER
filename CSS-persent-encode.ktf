@@ -1,0 +1,43 @@
+/*
+komodo tool: CSS-persent-encode
+===============================
+async: 0
+icon: chrome://famfamfamsilk/skin/icons/arrow_redo.png
+is_clean: true
+keyboard_shortcut: Alt+.
+language: JavaScript
+rank: 100
+trigger: trigger_postopen
+trigger_enabled: 0
+type: macro
+version: 1.1.5
+===============================*/
+//var line;
+var text;
+var text_out = "";
+var buf = "";
+var buf1 = 0;
+var buf2 = 0;
+//line = require("ko/editor").getLineNumber();
+//text = require("ko/editor").getLine(line) ;
+text = require("ko/editor").getSelection();
+//require("ko/editor").deleteLine();
+for (var i=0; i < text.length; i++)
+{
+ buf = text[i];
+ if (buf=="%") 
+   {
+    i++;
+    buf1 = text[i].charCodeAt(0);
+    i++;
+    buf2 = text[i].charCodeAt(0);
+    if (buf2 < 58 ) buf = String.fromCharCode((buf1 - 48)*16 + (buf2-48));
+	   else buf = String.fromCharCode((buf1 - 48)*16 + (buf2-55));          
+   }
+   text_out = text_out + buf;
+   if (buf==">") text_out = text_out + "\n";
+}
+text_out = text_out + "\n";
+//require("ko/editor").insert(text_out);
+//require("ko/dialogs").alert(text_out, {title:"Persent decoding string:"});
+alert (text_out);

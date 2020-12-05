@@ -1,0 +1,91 @@
+/*
+komodo tool: BASE64
+===================
+async: 0
+icon: chrome://famfamfamsilk/skin/icons/arrow_down.png
+is_clean: true
+keyboard_shortcut: Alt+/
+language: JavaScript
+rank: 100
+trigger: trigger_postopen
+trigger_enabled: 0
+type: macro
+version: 1.1.5
+===================*/
+function get64(j) 
+{
+//prjntf ("-%u ", j);	
+if (j<26) j = j + 65;
+else if (j<52) j = j + 71;
+else if (j<62) j = j - 4;
+else if (j==62) j = 43;
+else if (j==63) j = 47;
+return (j);	
+}
+var filepath = require("ko/ui/filepath").create({filetype:"file"});
+panel = require("ko/ui/panel").create();
+panel.addRow(filepath);
+panel.open();
+var n = "";
+n = filepath.value("Select file");
+var ii = 0;
+var timer = setInterval(function() {
+  ii++;
+  if ((ii === 25) || (n != "Select file")) {
+    clearInterval(timer);
+    var tmp, buf, buf1, buf2, buf3;
+    var name = n;
+    panel.close();
+var point_poz = name.lastIndexOf('.');
+var ext = "";
+for (var i = point_poz+1; i<name.length; i++)
+{
+    ext = ext + name[i];
+}
+if ((ext == "jpg") || (ext == "JPG")) {ext = "jpeg";}
+var start_str = "data:image/" + ext + ";base64,";
+var t = require("ko/file").read(name, "b");
+var b64_out = "";
+i = 0;
+while (i<t.length-1)
+{
+buf =  t[i].charCodeAt(0);
+   buf1 = buf & 0xFC;
+   buf1 = buf1 >> 2;
+   buf1 = get64(buf1);
+   b64_out = b64_out + String.fromCharCode(buf1);  
+   buf2 = buf & 0x03;
+   buf2 = buf2 << 4;
+   if (i <t.length)
+   {
+   i++;
+   buf =  t[i].charCodeAt(0);
+   tmp =  buf & 0xF0;
+   tmp = tmp >> 4;
+   buf2 = buf2 | tmp;
+   buf2 = get64(buf2);
+   b64_out = b64_out + String.fromCharCode(buf2);
+   buf3 = buf & 0x0F;
+   buf3 = buf3 << 2;
+    }
+   if (i <t.length)
+   { 
+   i++;
+   buf =  t[i].charCodeAt(0);
+   tmp = buf & 0xC0;
+   tmp = tmp >>> 6;
+   buf3 = buf3 | tmp;
+   buf3 = get64(buf3);
+   b64_out = b64_out + String.fromCharCode(buf3);
+   buf4 = buf & 0x3F;   
+   buf4 = get64(buf4);
+   b64_out = b64_out + String.fromCharCode(buf4);
+   }
+   i++;
+}
+//alert(start_str + b64_out);
+// + "/2Q=="
+require("ko/editor").insert(start_str + b64_out);   
+    }
+  n = filepath.value();
+}, 500);
