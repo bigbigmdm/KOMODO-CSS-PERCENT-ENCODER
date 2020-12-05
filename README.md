@@ -2,6 +2,7 @@ CSS-persent-code Language Percentage encoding of the selected text in the editor
 This encoding is used when including SVG images in CSS-background . 
 The encoding result is placed in a pop-up message box.
 
+KOMODO-CSS-PERSENT-CODER consists of three parts:
     Javascript code to convert a scalable vector graphics (SVG) image to a percentage code.
     Javascript code for the reverse operation - converting the percentage format code to SVG code.
     Javascript code to convert Jpeg and Png images to BASE64 format and insert this code into a CSS document.
