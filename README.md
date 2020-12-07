@@ -20,6 +20,6 @@ You can select and copy this code and paste it in the CSS background line.
 Select this code and press <ALT> + >. 
 A pop-up window will show the SVG code for this snippet.
  
-3. 3. BASE64 encoder. Place the cursor on the line <img src = \"\"> between the quotes. 
+3. BASE64 encoder. Place the cursor on the line <img src = \"\"> between the quotes. 
 Press <ALT> + /. The file manager will open. Select a small Jpeg or PNG image on your computer. 
 The BASE64 code will be inserted in quotes.
