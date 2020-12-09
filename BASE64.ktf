@@ -95,8 +95,6 @@ buf =  t[i].charCodeAt(0);
    }
    i++;
 }
-//alert(start_str + b64_out);
-// + "/2Q=="
 require("ko/editor").insert(start_str + b64_out);   
     }
   n = filepath.value();
