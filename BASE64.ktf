@@ -88,7 +88,6 @@ buf =  t[i].charCodeAt(0);
    }
     else
    {
-    console.log("byte2");
     buf3 = get64(buf3);
     if (i <=t.length) b64_out = b64_out + String.fromCharCode(buf3);
     b64_out = b64_out + "=";
