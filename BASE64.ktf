@@ -29,7 +29,7 @@ n = filepath.value("Select file");
 var ii = 0;
 var timer = setInterval(function() {
   ii++;
-  if ((ii === 25) || (n != "Select file")) {
+  if ((ii === 40) || (n != "Select file")) {
     clearInterval(timer);
     var tmp, buf, buf1, buf2, buf3;
     var name = n;
