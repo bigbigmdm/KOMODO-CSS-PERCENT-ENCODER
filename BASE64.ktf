@@ -2,6 +2,7 @@
 komodo tool: BASE64
 ===================
 async: 0
+icon: chrome://famfamfamsilk/skin/icons/arrow_ns.png
 is_clean: true
 keyboard_shortcut: Alt+/
 language: JavaScript
