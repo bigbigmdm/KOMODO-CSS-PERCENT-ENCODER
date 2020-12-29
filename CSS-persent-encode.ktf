@@ -2,15 +2,15 @@
 komodo tool: CSS-persent-encode
 ===============================
 async: 0
-icon: chrome://famfamfamsilk/skin/icons/arrow_redo.png
+icon: file:///home/mimi/Загрузки/from_percent.png
 is_clean: true
-keyboard_shortcut: Alt+.
+keyboard_shortcut: Alt+,
 language: JavaScript
 rank: 100
 trigger: trigger_postopen
 trigger_enabled: 0
 type: macro
-version: 1.1.5
+version: 1.1.6
 ===============================*/
 //var line;
 var text;

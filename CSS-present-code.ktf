@@ -1,16 +1,16 @@
 /*
 komodo tool: CSS-present-code
 =============================
-async: 0
-icon: chrome://famfamfamsilk/skin/icons/arrow_undo.png
+async: False
+icon: file:///home/mimi/Загрузки/to_percent(1).png
 is_clean: true
-keyboard_shortcut: Alt+,
+keyboard_shortcut: Alt+.
 language: JavaScript
 rank: 100
 trigger: trigger_postopen
-trigger_enabled: 0
+trigger_enabled: False
 type: macro
-version: 1.1.5
+version: 1.1.6
 =============================*/
 var text;
 var text_out = 'background: url("data:image/svg+xml,';
