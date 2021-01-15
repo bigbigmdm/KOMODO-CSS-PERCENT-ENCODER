@@ -2,7 +2,7 @@
 komodo tool: BASE64
 ===================
 async: 0
-icon: chrome://famfamfamsilk/skin/icons/arrow_ns.png
+icon: file:///home/mimi/Изображения/icon64.png
 is_clean: true
 keyboard_shortcut: Alt+/
 language: JavaScript
@@ -46,13 +46,20 @@ var start_str = "data:image/" + ext + ";base64,";
 var t = require("ko/file").read(name, "b");
 var b64_out = "";
 i = 0;
+k = 0;
 while (i<t.length)
 {
 buf =  t[i].charCodeAt(0);
    buf1 = buf & 0xFC;
    buf1 = buf1 >> 2;
    buf1 = get64(buf1);
-   b64_out = b64_out + String.fromCharCode(buf1);  
+   b64_out = b64_out + String.fromCharCode(buf1);
+   k++;
+   if (k==71)
+   {
+    k=0;
+     b64_out = b64_out + "\n";
+   }
    buf2 = buf & 0x03;
    buf2 = buf2 << 4;
      i++;
@@ -64,6 +71,12 @@ buf =  t[i].charCodeAt(0);
    buf2 = buf2 | tmp;
    buf2 = get64(buf2);
    b64_out = b64_out + String.fromCharCode(buf2);
+   k++;
+   if (k==71)
+   {
+    k=0;
+     b64_out = b64_out + "\n";
+   }
    buf3 = buf & 0x0F;
    buf3 = buf3 << 2;
     }
@@ -71,6 +84,12 @@ buf =  t[i].charCodeAt(0);
      {
       buf2 = get64(buf2);
       b64_out = b64_out + String.fromCharCode(buf2);
+      k++;
+   if (k==71)
+   {
+    k=0;
+     b64_out = b64_out + "\n";
+   }
       b64_out = b64_out + "=";
      }
      i++;
@@ -80,11 +99,24 @@ buf =  t[i].charCodeAt(0);
    buf =  t[i].charCodeAt(0);
    tmp = buf & 0xC0;
    tmp = tmp >>> 6;
-   buf3 = buf3 | tmp;   buf3 = get64(buf3);
+   buf3 = buf3 | tmp;
+   buf3 = get64(buf3);
    b64_out = b64_out + String.fromCharCode(buf3);
+   k++;
+   if (k==71)
+   {
+    k=0;
+     b64_out = b64_out + "\n";
+   }
    buf4 = buf & 0x3F;   
    buf4 = get64(buf4);
    b64_out = b64_out + String.fromCharCode(buf4);
+   k++;
+   if (k==71)
+   {
+    k=0;
+     b64_out = b64_out + "\n";
+   }
    }
     else
    {
