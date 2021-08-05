@@ -15,16 +15,19 @@ How to use:
 Select the SVG code and press ALT + <. 
 A pop-up window will display the percentage code. 
 You can select and copy this code and paste it in the CSS background line.
+
 ![Svg to percent](https://github.com/bigbigmdm/KOMODO-CSS-PERCENT-ENCODER/raw/main/images/SVG_to_percent.gif)
 
 2. The back operation. Open the CSS file with the percentage code. 
 Select this code and press ALT + >. 
 A pop-up window will show the SVG code for this snippet.
+
 ![Percent to svg](https://github.com/bigbigmdm/KOMODO-CSS-PERCENT-ENCODER/raw/main/images/Percent_to_SVG.gif)
 
 3. BASE64 encoder. Place the cursor on the line <img src = \"\"> between the quotes. 
 Press ALT + . The file manager will open. Select a small Jpeg or PNG image on your computer. 
 The BASE64 code will be inserted in quotes.
+
 ![BASE64 operation](https://github.com/bigbigmdm/KOMODO-CSS-PERCENT-ENCODER/raw/main/images/B64.gif)
 
 You can see animated demo GIFs of any parts the KOMODO-CSS-PERSENT-CODER in the "/images" folder.
